@@ -1,0 +1,323 @@
+/**
+ * @name Team KAIDO
+ * @description Tema escuro com estética hacker/red team para o KaidoCord
+ * @author Team KAIDO
+ * @version 1.0.0
+ * @invite teamkaido
+ * @source https://github.com/burrice/KaidoCord
+ */
+
+/* ============================================================
+   PALETA TEAM KAIDO
+   bg-primary:    #0a0a0a   (preto profundo)
+   bg-secondary:  #111111   (painéis)
+   bg-tertiary:   #181818   (inputs, cards)
+   accent:        #c41e3a   (vermelho KAIDO)
+   accent-glow:   #ff2a45   (hover, glow)
+   accent-dim:    #7a1225   (selecionado)
+   green:         #00e676   (online, positivo)
+   text:          #e0e0e0
+   muted:         #555555
+   border:        #222222
+   ============================================================ */
+
+:root {
+    --kaido-red: #c41e3a;
+    --kaido-red-glow: #ff2a45;
+    --kaido-red-dim: #7a1225;
+    --kaido-green: #00e676;
+    --kaido-bg: #0a0a0a;
+    --kaido-surface: #111111;
+    --kaido-card: #161616;
+    --kaido-border: #222222;
+    --kaido-text: #e0e0e0;
+    --kaido-muted: #555555;
+    --kaido-font: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+}
+
+/* === BACKGROUNDS === */
+.theme-dark {
+    --background-primary: var(--kaido-bg) !important;
+    --background-secondary: var(--kaido-surface) !important;
+    --background-secondary-alt: #0e0e0e !important;
+    --background-tertiary: var(--kaido-card) !important;
+    --background-accent: var(--kaido-red-dim) !important;
+    --background-floating: #0f0f0f !important;
+    --background-mobile-primary: var(--kaido-bg) !important;
+    --background-mobile-secondary: var(--kaido-surface) !important;
+    --background-modifier-hover: rgba(196, 30, 58, 0.08) !important;
+    --background-modifier-active: rgba(196, 30, 58, 0.15) !important;
+    --background-modifier-selected: rgba(196, 30, 58, 0.2) !important;
+    --background-modifier-accent: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* === ACCENT / COR PRIMÁRIA === */
+.theme-dark {
+    --brand-experiment: var(--kaido-red) !important;
+    --brand-experiment-100: #3d0a13 !important;
+    --brand-experiment-130: #52101b !important;
+    --brand-experiment-160: #671524 !important;
+    --brand-experiment-200: #7a1225 !important;
+    --brand-experiment-230: #8f1830 !important;
+    --brand-experiment-260: #a41b38 !important;
+    --brand-experiment-300: var(--kaido-red) !important;
+    --brand-experiment-330: #d4213f !important;
+    --brand-experiment-360: #e02545 !important;
+    --brand-experiment-400: #ff2a45 !important;
+    --brand-experiment-430: #ff4d64 !important;
+    --brand-experiment-460: #ff7080 !important;
+    --brand-experiment-500: #ff9aa2 !important;
+    --brand-500: var(--kaido-red) !important;
+    --brand-560: var(--kaido-red-glow) !important;
+}
+
+/* === TEXTO === */
+.theme-dark {
+    --header-primary: #f0f0f0 !important;
+    --header-secondary: #aaaaaa !important;
+    --text-normal: var(--kaido-text) !important;
+    --text-muted: var(--kaido-muted) !important;
+    --text-link: var(--kaido-red-glow) !important;
+    --text-positive: var(--kaido-green) !important;
+    --interactive-normal: #cccccc !important;
+    --interactive-hover: #ffffff !important;
+    --interactive-active: #ffffff !important;
+    --interactive-muted: var(--kaido-muted) !important;
+}
+
+/* === SIDEBAR DE SERVIDORES === */
+.guilds-2JjMmN,
+nav[aria-label="Servidores"] {
+    background: #080808 !important;
+    border-right: 1px solid var(--kaido-border) !important;
+}
+
+/* === SIDEBAR DE CANAIS === */
+.sidebar-1tnWFu,
+nav[aria-label="Canais"] {
+    background: var(--kaido-surface) !important;
+}
+
+/* === ÁREA DE MENSAGENS === */
+.chat-2ZfjoI {
+    background: var(--kaido-bg) !important;
+}
+
+/* === INPUT DE MENSAGEM === */
+.channelTextArea-qFWBT7 {
+    background: var(--kaido-card) !important;
+    border: 1px solid var(--kaido-border) !important;
+    border-radius: 8px !important;
+    transition: border-color 0.2s ease !important;
+}
+
+.channelTextArea-qFWBT7:focus-within {
+    border-color: var(--kaido-red) !important;
+    box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.2) !important;
+}
+
+/* === MENSAGENS === */
+.message-2qnXI6:hover {
+    background: rgba(196, 30, 58, 0.04) !important;
+}
+
+.message-2qnXI6.selected-1Tbx07 {
+    background: rgba(196, 30, 58, 0.08) !important;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+    width: 4px !important;
+    height: 4px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--kaido-red-dim) !important;
+    border-radius: 2px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--kaido-red) !important;
+}
+
+/* === BOTÕES === */
+.button-f2h6uQ[class*="colorBrand"],
+.button-f2h6uQ[class*="lookFilled"] {
+    background: var(--kaido-red) !important;
+    transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.button-f2h6uQ[class*="colorBrand"]:hover {
+    background: var(--kaido-red-glow) !important;
+    box-shadow: 0 0 12px rgba(196, 30, 58, 0.4) !important;
+}
+
+/* === MENÇÃO DO USUÁRIO === */
+.mention {
+    background: rgba(196, 30, 58, 0.2) !important;
+    color: var(--kaido-red-glow) !important;
+}
+
+.mention:hover {
+    background: var(--kaido-red) !important;
+    color: white !important;
+}
+
+/* === STATUS ONLINE — verde KAIDO === */
+rect[fill="#23a55a"],
+rect[fill="#1a9b50"] {
+    fill: var(--kaido-green) !important;
+}
+
+/* === PAINÉIS / MODAIS === */
+.root-1gCeng,
+[class*="modal-"] {
+    background: var(--kaido-surface) !important;
+    border: 1px solid var(--kaido-border) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(196, 30, 58, 0.15) !important;
+}
+
+/* === SETTINGS SIDEBAR === */
+.sidebar-2K8pFh {
+    background: #0d0d0d !important;
+    border-right: 1px solid var(--kaido-border) !important;
+}
+
+.item-3XjbnG.selected-3s90CH {
+    background: rgba(196, 30, 58, 0.2) !important;
+    color: white !important;
+}
+
+.item-3XjbnG.selected-3s90CH::before {
+    background: var(--kaido-red) !important;
+}
+
+.item-3XjbnG:hover {
+    background: rgba(196, 30, 58, 0.1) !important;
+}
+
+/* === HEADER DO CANAL === */
+.title-31JmR4 {
+    color: var(--kaido-text) !important;
+}
+
+/* === CATEGORY HEADER === */
+.containerDefault-YUSmu6 {
+    color: var(--kaido-muted) !important;
+    text-transform: uppercase !important;
+    font-size: 10px !important;
+    letter-spacing: 1.2px !important;
+}
+
+/* === NOME DO SERVIDOR === */
+.nameText-Hp0WGF {
+    color: var(--kaido-text) !important;
+    font-weight: 700 !important;
+}
+
+/* === AVATAR HOVER RING === */
+.wrapper-1ZcZW- .svg-2OQQ55 circle[class*="radialGradient"] {
+    stop-color: var(--kaido-red) !important;
+}
+
+/* === VOICE CHANNEL — ativo === */
+.selected-aXhQR6 {
+    background: rgba(196, 30, 58, 0.15) !important;
+    border-left: 2px solid var(--kaido-red) !important;
+}
+
+/* === TOOLTIP === */
+.tooltip-33Jwqe {
+    background: #1a1a1a !important;
+    border: 1px solid var(--kaido-border) !important;
+    color: var(--kaido-text) !important;
+    font-size: 12px !important;
+}
+
+/* === SEPARADOR === */
+.divider-JfaTT5 {
+    border-color: var(--kaido-border) !important;
+}
+
+/* === NITRO / ADS — ocultar === */
+.premiumPromo-1nzyc6,
+.upsellContainer-Wc9gQ1,
+[class*="premiumTab"],
+[class*="guildBoost"] {
+    display: none !important;
+}
+
+/* === UNREAD BADGE === */
+.numberBadge-37OJ3S,
+.base-PmTxvP {
+    background: var(--kaido-red) !important;
+}
+
+/* === PING / MENTION BADGE === */
+.badge-1tDIiB {
+    background: var(--kaido-red) !important;
+}
+
+/* === REACTION === */
+.reaction-3PsJ-m:hover,
+.reaction-3PsJ-m.reacted-nCPRhm {
+    background: rgba(196, 30, 58, 0.2) !important;
+    border-color: var(--kaido-red) !important;
+}
+
+/* === SWITCH TOGGLE === */
+[class*="slider"][class*="checked"] {
+    background: var(--kaido-red) !important;
+}
+
+/* === BARRA INFERIOR (user panel) === */
+.panels-3wFtMD {
+    background: #0d0d0d !important;
+    border-top: 1px solid var(--kaido-border) !important;
+}
+
+/* === EFEITO: linha vertical sutil na esquerda dos canais ativos === */
+.modeSelected-1zMQRu::before,
+[class*="selected"][class*="channel"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 60%;
+    background: var(--kaido-red);
+    border-radius: 0 2px 2px 0;
+}
+
+/* === GLOW sutil em menções diretas === */
+.mentioned-xhSam3 {
+    border-left: 2px solid var(--kaido-red) !important;
+    background: rgba(196, 30, 58, 0.06) !important;
+}
+
+/* === CODE BLOCKS === */
+code, pre, .markup-eYLPri code {
+    background: #1a1a1a !important;
+    border: 1px solid var(--kaido-border) !important;
+    color: #ff7070 !important;
+    font-family: var(--kaido-font) !important;
+}
+
+pre code {
+    color: #e0e0e0 !important;
+}
+
+/* === LINKS === */
+a {
+    color: var(--kaido-red-glow) !important;
+}
+
+a:hover {
+    color: #ff6080 !important;
+    text-decoration: underline !important;
+}

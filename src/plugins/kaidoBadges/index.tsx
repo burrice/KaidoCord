@@ -7,50 +7,94 @@
 import { addProfileBadge, BadgePosition, removeProfileBadge } from "@api/Badges";
 import { Devs } from "@utils/constants";
 import definePlugin from "@utils/types";
+import { GuildMemberStore, React } from "@webpack/common";
 
-// IDs dos membros do Team KAIDO com badge ativo
+// Servidor oficial do Team KAIDO — só membros deste servidor recebem o badge
+const KAIDO_GUILD_ID = "1473938294768271364";
+
+// IDs dos membros core com badge (owner + equipe)
 const KAIDO_TEAM_IDS = new Set<bigint>([
     1098146574393163817n, // j6 (owner)
-    // adicione mais IDs aqui conforme o time crescer
 ]);
+
+function KaidoIcon() {
+    return (
+        <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            {/* Hexágono estilizado — identidade visual Team KAIDO */}
+            <polygon
+                points="12,2 21,7 21,17 12,22 3,17 3,7"
+                fill="#c41e3a"
+                stroke="#ff4757"
+                strokeWidth="1"
+            />
+            <text
+                x="12"
+                y="16"
+                textAnchor="middle"
+                fontSize="10"
+                fontWeight="bold"
+                fontFamily="monospace"
+                fill="white"
+            >
+                K
+            </text>
+        </svg>
+    );
+}
+
+function isKaidoMember(userId: string): boolean {
+    // Verifica se o usuário é membro do servidor Team KAIDO
+    const member = GuildMemberStore.getMember(KAIDO_GUILD_ID, userId);
+    return member != null;
+}
+
+function isKaidoCore(userId: string): boolean {
+    try {
+        return KAIDO_TEAM_IDS.has(BigInt(userId));
+    } catch {
+        return false;
+    }
+}
 
 const kaidoBadge = {
     id: "kaido-team",
     description: "Team KAIDO",
     position: BadgePosition.START,
-    shouldShow: ({ userId }: { userId: string; }) => {
-        return KAIDO_TEAM_IDS.has(BigInt(userId));
-    },
-    component: ({ userId }: { userId: string; }) => (
-        <img
-            src="https://raw.githubusercontent.com/teamkaido/kaidocord/main/assets/kaido-badge.png"
-            alt="Team KAIDO"
-            title="Team KAIDO"
-            style={{
-                width: "20px",
-                height: "20px",
-                borderRadius: "50%",
-                objectFit: "cover",
-            }}
-            onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                // fallback para emoji se imagem não carregar
-                (e.target as HTMLImageElement).style.display = "none";
-            }}
-        />
-    ),
+    shouldShow: ({ userId }: { userId: string; }) => isKaidoMember(userId),
+    getBadges: ({ userId }: { userId: string; }) => {
+        const isCore = isKaidoCore(userId);
+        return [{
+            id: "kaido-member-badge",
+            description: isCore ? "Team KAIDO — Core" : "Team KAIDO",
+            component: () => (
+                <div
+                    title={isCore ? "Team KAIDO — Core" : "Team KAIDO"}
+                    style={{ display: "inline-flex", alignItems: "center" }}
+                >
+                    <KaidoIcon />
+                </div>
+            )
+        }];
+    }
 };
 
 export default definePlugin({
     name: "KaidoBadges",
-    description: "Exibe o badge do Team KAIDO nos perfis dos membros",
-    authors: [Devs.arc],
+    description: "Exibe badge Team KAIDO para membros do servidor oficial",
+    authors: [Devs.epy],
     dependencies: ["BadgeAPI"],
 
     start() {
-        addProfileBadge(kaidoBadge);
+        addProfileBadge(kaidoBadge as any);
     },
 
     stop() {
-        removeProfileBadge(kaidoBadge);
+        removeProfileBadge(kaidoBadge as any);
     },
 });
