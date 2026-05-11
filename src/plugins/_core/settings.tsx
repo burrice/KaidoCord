@@ -171,8 +171,8 @@ export default definePlugin({
         const vencordEntries: SettingsLayoutNode[] = [
             buildEntry({
                 key: "vencord_main",
-                title: "Vencord",
-                panelTitle: "Vencord Settings",
+                title: "Kaidocord",
+                panelTitle: "Kaidocord",
                 Component: VencordTab,
                 Icon: MainSettingsIcon
             }),
@@ -198,7 +198,7 @@ export default definePlugin({
             buildEntry({
                 key: "vencord_cloud",
                 title: "Cloud",
-                panelTitle: "Vencord Cloud",
+                panelTitle: "Kaidocord Cloud",
                 Component: CloudTab,
                 Icon: CloudIcon
             }),
@@ -232,7 +232,7 @@ export default definePlugin({
         const vencordSection: SettingsLayoutNode = {
             key: "vencord_section",
             type: LayoutTypes.SECTION,
-            useTitle: () => "Vencord Settings",
+            useTitle: () => "Kaidocord",
             buildLayout: () => vencordEntries
         };
 

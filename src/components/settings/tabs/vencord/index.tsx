@@ -125,88 +125,57 @@ function Switches() {
     });
 }
 
-function VencordSettings() {
-    const donateImage = useMemo(() =>
-        Math.random() > 0.5 ? DEFAULT_DONATE_IMAGE : SHIGGY_DONATE_IMAGE,
-        []
-    );
-
+function KaidocordSettings() {
     const needsVibrancySettings = IS_DISCORD_DESKTOP && IS_MAC;
 
     const user = UserStore?.getCurrentUser();
 
     return (
         <SettingsTab>
-            {isDonor(user?.id)
-                ? (
-                    <SpecialCard
-                        title="Donations"
-                        subtitle="Thank you for donating!"
-                        description="You can manage your perks at any time by messaging @vending.machine."
-                        cardImage={VENNIE_DONATOR_IMAGE}
-                        backgroundImage={DONOR_BACKGROUND_IMAGE}
-                        backgroundColor="#ED87A9"
-                    >
-                        <DonateButtonComponent />
-                    </SpecialCard>
-                )
-                : (
-                    <SpecialCard
-                        title="Support the Project"
-                        description="Please consider supporting the development of Vencord by donating!"
-                        cardImage={donateImage}
-                        backgroundImage={DONOR_BACKGROUND_IMAGE}
-                        backgroundColor="#c3a3ce"
-                    >
-                        <DonateButtonComponent />
-                    </SpecialCard>
-                )
-            }
-
             {isPluginDev(user?.id) && (
                 <SpecialCard
-                    title="Contributions"
-                    subtitle="Thank you for contributing!"
-                    description="Since you've contributed to Vencord you now have a cool new badge!"
+                    title="Team KAIDO"
+                    subtitle="Obrigado por contribuir!"
+                    description="Você é membro do Team KAIDO e tem um badge exclusivo no seu perfil!"
                     cardImage={COZY_CONTRIB_IMAGE}
                     backgroundImage={CONTRIB_BACKGROUND_IMAGE}
-                    backgroundColor="#EDCC87"
-                    buttonTitle="See what you've contributed to"
+                    backgroundColor="#1a1a2e"
+                    buttonTitle="Ver suas contribuições"
                     buttonOnClick={() => openContributorModal(user)}
                 />
             )}
 
             <section>
-                <Forms.FormTitle tag="h5">Quick Actions</Forms.FormTitle>
+                <Forms.FormTitle tag="h5">Ações Rápidas</Forms.FormTitle>
 
                 <QuickActionCard>
                     <QuickAction
                         Icon={LogIcon}
-                        text="Notification Log"
+                        text="Log de Notificações"
                         action={openNotificationLogModal}
                     />
                     <QuickAction
                         Icon={PaintbrushIcon}
-                        text="Edit QuickCSS"
+                        text="Editar QuickCSS"
                         action={() => VencordNative.quickCss.openEditor()}
                     />
                     {!IS_WEB && (
                         <>
                             <QuickAction
                                 Icon={RestartIcon}
-                                text="Relaunch Discord"
+                                text="Reiniciar Discord"
                                 action={relaunch}
                             />
                             <QuickAction
                                 Icon={FolderIcon}
-                                text="Open Settings Folder"
+                                text="Abrir Pasta de Configurações"
                                 action={() => VencordNative.settings.openFolder()}
                             />
                         </>
                     )}
                     <QuickAction
                         Icon={GithubIcon}
-                        text="View Source Code"
+                        text="Código Fonte"
                         action={() => VencordNative.native.openExternal("https://github.com/" + gitRemote)}
                     />
                 </QuickActionCard>
@@ -215,17 +184,16 @@ function VencordSettings() {
             <Divider />
 
             <section className={Margins.top16}>
-                <Forms.FormTitle tag="h5">Settings</Forms.FormTitle>
+                <Forms.FormTitle tag="h5">Configurações</Forms.FormTitle>
                 <Forms.FormText className={Margins.bottom20} style={{ color: "var(--text-muted)" }}>
-                    Hint: You can change the position of this settings section in the{" "}
+                    Dica: Você pode alterar a posição desta seção nas{" "}
                     <a onClick={() => openPluginModal(SettingsPlugin)}>
-                        settings of the Settings plugin
+                        configurações do plugin Settings
                     </a>!
                 </Forms.FormText>
 
                 <Switches />
             </section>
-
 
             {needsVibrancySettings && <VibrancySettings />}
 
@@ -234,4 +202,4 @@ function VencordSettings() {
     );
 }
 
-export default wrapTab(VencordSettings, "Vencord Settings");
+export default wrapTab(KaidocordSettings, "Kaidocord");

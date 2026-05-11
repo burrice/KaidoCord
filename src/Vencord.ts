@@ -1,6 +1,7 @@
 /*!
- * Vencord, a modification for Discord's desktop app
- * Copyright (c) 2022 Vendicated and contributors
+ * Kaidocord, a modification for Discord's desktop app
+ * Copyright (c) 2026 Team KAIDO and contributors
+ * Based on Vencord by Vendicated and contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,8 +60,8 @@ async function syncSettings() {
         // show a notification letting them know and tell them how to fix it
         showNotification({
             title: "Cloud Integrations",
-            body: "We've noticed you have cloud integrations enabled in another client! Due to limitations, you will " +
-                "need to re-authenticate to continue using them. Click here to go to the settings page to do so!",
+            body: "Detectamos que você tem Cloud Integrations ativo em outro cliente! Por limitações técnicas, " +
+                "você precisa re-autenticar. Clique aqui para ir às configurações.",
             color: "var(--yellow-360)",
             onClick: () => SettingsRouter.openUserSettings("vencord_cloud_panel")
         });
@@ -124,8 +125,8 @@ async function runUpdateCheck() {
             await update();
             if (Settings.autoUpdateNotification) {
                 notify({
-                    title: "Vencord has been updated!",
-                    body: "Click here to restart",
+                    title: "Kaidocord foi atualizado!",
+                    body: "Clique aqui para reiniciar",
                     onClick: relaunch
                 });
             }
@@ -133,8 +134,8 @@ async function runUpdateCheck() {
         }
 
         notify({
-            title: "A Vencord update is available!",
-            body: "Click here to view the update",
+            title: "Uma atualização do Kaidocord está disponível!",
+            body: "Clique aqui para ver a atualização",
             onClick: () => openSettingsTabModal(UpdaterTab!)
         });
     } catch (err) {
