@@ -1,258 +1,274 @@
 /**
  * @name Kaido Comfy
- * @description Tema soft warm — aesthetic Sakura com tons quentes, creme e rose gold
+ * @description Tema glassmorphism com background image — inspirado no ClearVision
  * @author Team KAIDO
- * @version 2.0.0
+ * @version 3.0.0
  * @source https://github.com/burrice/KaidoCord
  */
 
-/*
- * PALETA KAIDO COMFY v2 — SAKURA WARM
- * ─────────────────────────────────────────
- * bg-deep:    #12080e   (vinho escuro profundo)
- * bg-main:    #1c1016   (fundo principal)
- * bg-surface: #271520   (cards, painéis)
- * bg-card:    #31192a   (inputs, hover)
- * border:     #4a2438   (bordas suaves)
- *
- * sakura:     #ff85a1   (accent principal — rosa sakura)
- * rose:       #e8607a   (accent hover)
- * gold:       #ffcb77   (accent secundário — dourado quente)
- * peach:      #ffb380   (links, destaques)
- * mint:       #98d8c8   (positivo — verde menta)
- * coral:      #ff7b7b   (erro suave)
- * cream:      #fff0f3   (texto principal)
- * muted:      #a07080   (texto secundário)
- * ─────────────────────────────────────────
- */
+/* ============================================================
+   PERSONALIZAÇÃO — edite estas variáveis
+   ============================================================ */
+:root {
+    /* === BACKGROUND IMAGE === */
+    /* Coloque a URL da sua imagem aqui. Exemplos de walpapers animê/aesthetic: */
+    --bg-image: url("https://i.imgur.com/IrxGn84.jpeg");
+    --bg-position: center;
+    --bg-size: cover;
+    --bg-attachment: fixed;
+
+    /* === COR DE OVERLAY === */
+    /* Quanto escuro fica por cima da imagem (0.0 = transparente, 1.0 = opaco) */
+    --bg-overlay: 0.55;
+
+    /* === BLUR DO BACKGROUND === */
+    --bg-blur: 0px;  /* Aumenta para desfocar o fundo, ex: 5px */
+
+    /* === ACCENT COLOR === */
+    --main-color: #ff85a1;        /* Sakura rosa — mude para qualquer cor */
+    --hover-color: #e8607a;
+    --main-color-10: rgba(255, 133, 161, 0.10);
+    --main-color-20: rgba(255, 133, 161, 0.20);
+
+    /* === OPACIDADE DOS PAINÉIS === */
+    --channel-bg-alpha: 0.35;     /* sidebar de canais */
+    --chat-bg-alpha: 0.20;        /* área de chat (mais transparente) */
+    --member-bg-alpha: 0.35;      /* lista de membros */
+    --modal-bg-alpha: 0.85;       /* modais — mais opaco para legibilidade */
+    --input-bg-alpha: 0.50;       /* caixa de input */
+
+    /* === BLUR DOS MODAIS === */
+    --modal-blur: 20px;
+
+    /* === TEXTO === */
+    --text-color: #fff0f3;
+    --text-muted-color: rgba(255, 240, 243, 0.55);
+
+    /* === FONTE === */
+    --main-font: "Nunito", "gg sans", "Whitney", sans-serif;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
 
-:root {
-    --comfy-bg-deep:    #12080e;
-    --comfy-bg-main:    #1c1016;
-    --comfy-surface:    #271520;
-    --comfy-card:       #31192a;
-    --comfy-border:     #4a2438;
-    --comfy-sakura:     #ff85a1;
-    --comfy-rose:       #e8607a;
-    --comfy-gold:       #ffcb77;
-    --comfy-peach:      #ffb380;
-    --comfy-mint:       #98d8c8;
-    --comfy-coral:      #ff8080;
-    --comfy-cream:      #fff0f3;
-    --comfy-subtext:    #d4a0b0;
-    --comfy-muted:      #7a5060;
+/* ============================================================
+   BASE: BACKGROUND IMAGE EM TODA A TELA
+   ============================================================ */
+body, .app-2rEoOp, .app-1q1i1E {
+    background: none !important;
 }
 
-/* === FONTE SUAVE === */
-* { font-family: "Nunito", "Whitney", sans-serif !important; }
-
-/* === BACKGROUNDS === */
-.theme-dark {
-    --background-primary:           var(--comfy-bg-main) !important;
-    --background-secondary:         var(--comfy-bg-deep) !important;
-    --background-secondary-alt:     #160c12 !important;
-    --background-tertiary:          #0e060a !important;
-    --background-accent:            var(--comfy-card) !important;
-    --background-floating:          var(--comfy-surface) !important;
-    --background-mobile-primary:    var(--comfy-bg-main) !important;
-    --background-mobile-secondary:  var(--comfy-bg-deep) !important;
-    --background-modifier-hover:    rgba(255, 133, 161, 0.07) !important;
-    --background-modifier-active:   rgba(255, 133, 161, 0.14) !important;
-    --background-modifier-selected: rgba(255, 133, 161, 0.18) !important;
-    --background-modifier-accent:   rgba(255, 255, 255, 0.03) !important;
+/* O fundo real — a imagem cobre tudo */
+.app-2rEoOp::before,
+.bg-1Iv9UI::before,
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: -1;
+    background-image: var(--bg-image) !important;
+    background-position: var(--bg-position) !important;
+    background-size: var(--bg-size) !important;
+    background-attachment: var(--bg-attachment) !important;
+    filter: blur(var(--bg-blur))
+            brightness(var(--bg-brightness, 90%))
+            saturate(var(--bg-saturation, 110%));
 }
 
-/* === ACCENT — SAKURA === */
-.theme-dark {
-    --brand-experiment:     var(--comfy-sakura) !important;
-    --brand-experiment-100: #3d0f20 !important;
-    --brand-experiment-200: #5c1830 !important;
-    --brand-experiment-300: #8c3050 !important;
-    --brand-experiment-360: #c55070 !important;
-    --brand-experiment-400: #e06080 !important;
-    --brand-experiment-430: var(--comfy-sakura) !important;
-    --brand-experiment-460: #ffa0b8 !important;
-    --brand-experiment-500: #ffc0d0 !important;
-    --brand-500:            var(--comfy-sakura) !important;
-    --brand-560:            var(--comfy-rose) !important;
-}
-
-/* === TEXTO — CREAM QUENTE === */
-.theme-dark {
-    --header-primary:      var(--comfy-cream) !important;
-    --header-secondary:    var(--comfy-subtext) !important;
-    --text-normal:         var(--comfy-cream) !important;
-    --text-muted:          var(--comfy-muted) !important;
-    --text-link:           var(--comfy-peach) !important;
-    --text-positive:       var(--comfy-mint) !important;
-    --text-warning:        var(--comfy-gold) !important;
-    --text-danger:         var(--comfy-coral) !important;
-    --interactive-normal:  var(--comfy-subtext) !important;
-    --interactive-hover:   var(--comfy-cream) !important;
-    --interactive-active:  #ffffff !important;
-    --interactive-muted:   var(--comfy-muted) !important;
-}
+/* ============================================================
+   TRANSPARÊNCIA EM TODOS OS PAINÉIS
+   ============================================================ */
 
 /* === SIDEBAR DE SERVIDORES === */
 .guilds-2JjMmN,
-nav[aria-label="Servidores"] {
-    background: var(--comfy-bg-deep) !important;
-    border-right: 1px solid var(--comfy-border) !important;
+nav[aria-label="Servidores"],
+.wrapper-WL9xyq {
+    background: rgba(12, 5, 9, calc(var(--bg-overlay) + 0.1)) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
 }
 
 /* === SIDEBAR DE CANAIS === */
 .sidebar-1tnWFu,
 nav[aria-label="Canais"] {
-    background: var(--comfy-bg-main) !important;
+    background: rgba(12, 5, 9, var(--channel-bg-alpha)) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
 }
 
-/* === ÁREA DE CHAT === */
-.chat-2ZfjoI {
-    background: var(--comfy-bg-main) !important;
-    background-image: radial-gradient(
-        ellipse at top right,
-        rgba(255, 133, 161, 0.04) 0%,
-        transparent 60%
-    ) !important;
+/* === ÁREA DE CHAT — mais transparente para ver o bg === */
+.chat-2ZfjoI,
+.chatContent-3KybYg {
+    background: rgba(12, 5, 9, var(--chat-bg-alpha)) !important;
 }
 
-/* === INPUT === */
+/* === LISTA DE MEMBROS === */
+.membersWrap-3NUR2t,
+.member-list {
+    background: rgba(12, 5, 9, var(--member-bg-alpha)) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* === INPUT DE MENSAGEM === */
 .channelTextArea-qFWBT7 {
-    background: var(--comfy-card) !important;
-    border: 1px solid var(--comfy-border) !important;
+    background: rgba(12, 5, 9, var(--input-bg-alpha)) !important;
+    border: 1px solid rgba(255, 133, 161, 0.25) !important;
     border-radius: 16px !important;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
 }
-
 .channelTextArea-qFWBT7:focus-within {
-    border-color: var(--comfy-sakura) !important;
+    border-color: var(--main-color) !important;
     box-shadow:
-        0 0 0 3px rgba(255, 133, 161, 0.15),
-        0 4px 20px rgba(255, 133, 161, 0.08) !important;
+        0 0 0 2px rgba(255, 133, 161, 0.2),
+        0 4px 24px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* === MENSAGENS === */
+/* === MODAIS — glass com blur forte === */
+.root-1gCeng,
+[class*="modal-"],
+.container-1eFtFS {
+    background: rgba(20, 8, 14, var(--modal-bg-alpha)) !important;
+    border: 1px solid rgba(255, 133, 161, 0.15) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(var(--modal-blur)) saturate(1.4) !important;
+    -webkit-backdrop-filter: blur(var(--modal-blur)) saturate(1.4) !important;
+    box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 133, 161, 0.08),
+        inset 0 1px 0 rgba(255, 200, 220, 0.07) !important;
+}
+
+/* === DROPDOWNS / POPOUTS / MENUS === */
+.lookFilled-yCfaCM,
+[class*="menu-"],
+.popout-TdhJ6Z,
+.layer-2aCOJ3 > [class*="container"] {
+    background: rgba(15, 6, 11, 0.88) !important;
+    border: 1px solid rgba(255, 133, 161, 0.18) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(24px) saturate(1.6) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.6) !important;
+}
+
+/* === SETTINGS SIDEBAR === */
+.sidebar-2K8pFh {
+    background: rgba(8, 3, 6, 0.80) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* === BARRA INFERIOR (microfone, avatar) === */
+.panels-3wFtMD {
+    background: rgba(8, 3, 6, 0.75) !important;
+    border-top: 1px solid rgba(255, 133, 161, 0.1) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* === HEADER DO CANAL === */
+.header-2V-4MQ {
+    background: rgba(12, 5, 9, 0.60) !important;
+    border-bottom: 1px solid rgba(255, 133, 161, 0.1) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* === MENSAGENS — fundo glass sutil === */
 .message-2qnXI6:hover {
-    background: rgba(255, 133, 161, 0.04) !important;
+    background: rgba(255, 133, 161, 0.05) !important;
     border-radius: 8px !important;
 }
-
 .message-2qnXI6.selected-1Tbx07 {
-    background: rgba(255, 133, 161, 0.07) !important;
-}
-
-/* === MENCIONADO === */
-.mentioned-xhSam3 {
     background: rgba(255, 133, 161, 0.08) !important;
-    border-left: 3px solid var(--comfy-sakura) !important;
-    border-radius: 0 8px 8px 0 !important;
+}
+.mentioned-xhSam3 {
+    background: rgba(255, 133, 161, 0.09) !important;
+    border-left: 3px solid var(--main-color) !important;
 }
 
-/* === MENTION INLINE === */
-.mention {
-    background: rgba(255, 133, 161, 0.18) !important;
-    color: var(--comfy-sakura) !important;
-    border-radius: 6px !important;
-    padding: 1px 4px !important;
-    font-weight: 600 !important;
-}
-.mention:hover {
-    background: var(--comfy-sakura) !important;
-    color: var(--comfy-bg-deep) !important;
+/* ============================================================
+   CORES E TEXTO
+   ============================================================ */
+.theme-dark {
+    --background-primary:           transparent !important;
+    --background-secondary:         transparent !important;
+    --background-secondary-alt:     transparent !important;
+    --background-tertiary:          transparent !important;
+    --background-floating:          rgba(15, 6, 11, 0.88) !important;
+    --background-modifier-hover:    var(--main-color-10) !important;
+    --background-modifier-active:   var(--main-color-20) !important;
+    --background-modifier-selected: rgba(255, 133, 161, 0.18) !important;
+
+    /* Accent */
+    --brand-experiment:     var(--main-color) !important;
+    --brand-experiment-400: var(--hover-color) !important;
+    --brand-experiment-430: var(--main-color) !important;
+    --brand-experiment-460: #ffa0b8 !important;
+    --brand-500:            var(--main-color) !important;
+
+    /* Texto */
+    --header-primary:   var(--text-color) !important;
+    --header-secondary: var(--text-muted-color) !important;
+    --text-normal:      var(--text-color) !important;
+    --text-muted:       var(--text-muted-color) !important;
+    --text-link:        #ffb380 !important;
+    --text-positive:    #98d8c8 !important;
+    --text-warning:     #ffcb77 !important;
+    --text-danger:      #ff8080 !important;
+
+    --interactive-normal:  rgba(255, 240, 243, 0.75) !important;
+    --interactive-hover:   var(--text-color) !important;
+    --interactive-active:  #ffffff !important;
+    --interactive-muted:   rgba(255, 240, 243, 0.35) !important;
 }
 
-/* === SCROLLBAR === */
-::-webkit-scrollbar { width: 4px !important; height: 4px !important; }
-::-webkit-scrollbar-track { background: transparent !important; }
-::-webkit-scrollbar-thumb {
-    background: var(--comfy-border) !important;
-    border-radius: 4px !important;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--comfy-sakura) !important;
-}
+/* === FONTE === */
+* { font-family: var(--main-font) !important; }
+
+/* ============================================================
+   UI COMPONENTS
+   ============================================================ */
 
 /* === BOTÕES === */
 .button-f2h6uQ[class*="colorBrand"],
 .button-f2h6uQ[class*="lookFilled"] {
-    background: linear-gradient(135deg, var(--comfy-sakura), var(--comfy-rose)) !important;
-    color: var(--comfy-bg-deep) !important;
+    background: linear-gradient(135deg, var(--main-color), var(--hover-color)) !important;
+    color: #120810 !important;
     font-weight: 700 !important;
     border-radius: 10px !important;
     transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 .button-f2h6uQ[class*="colorBrand"]:hover {
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 20px rgba(255, 133, 161, 0.4) !important;
+    box-shadow: 0 6px 24px rgba(255, 133, 161, 0.45) !important;
 }
 
-/* === STATUS ONLINE === */
-rect[fill="#23a55a"],
-rect[fill="#1a9b50"] {
-    fill: var(--comfy-mint) !important;
+/* === SWITCH === */
+[class*="slider"][class*="checked"] {
+    background: linear-gradient(135deg, var(--main-color), #ffcb77) !important;
 }
 
-/* === PAINÉIS / MODAIS === */
-.root-1gCeng,
-[class*="modal-"] {
-    background: var(--comfy-surface) !important;
-    border: 1px solid var(--comfy-border) !important;
-    border-radius: 16px !important;
-    box-shadow:
-        0 24px 64px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 133, 161, 0.1),
-        inset 0 1px 0 rgba(255, 200, 220, 0.08) !important;
+/* === SCROLLBAR === */
+::-webkit-scrollbar { width: 4px !important; }
+::-webkit-scrollbar-track { background: transparent !important; }
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 133, 161, 0.3) !important;
+    border-radius: 4px !important;
 }
-
-/* === GLASS — popouts, dropdowns, menus === */
-.lookFilled-yCfaCM,
-[class*="menu-"] {
-    background: rgba(39, 21, 32, 0.92) !important;
-    border: 1px solid var(--comfy-border) !important;
-    border-radius: 12px !important;
-    backdrop-filter: blur(20px) saturate(1.5) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(1.5) !important;
-}
-
-/* === SETTINGS SIDEBAR === */
-.sidebar-2K8pFh {
-    background: var(--comfy-bg-deep) !important;
-}
-
-.item-3XjbnG.selected-3s90CH {
-    background: rgba(255, 133, 161, 0.16) !important;
-    color: var(--comfy-sakura) !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-}
-.item-3XjbnG.selected-3s90CH::before {
-    background: linear-gradient(to bottom, var(--comfy-sakura), var(--comfy-gold)) !important;
-    border-radius: 0 4px 4px 0 !important;
-}
-.item-3XjbnG:hover {
-    background: rgba(255, 133, 161, 0.08) !important;
-    border-radius: 8px !important;
-}
-
-/* === CATEGORY HEADER === */
-.containerDefault-YUSmu6 {
-    color: var(--comfy-muted) !important;
-    text-transform: uppercase !important;
-    font-size: 10px !important;
-    font-weight: 700 !important;
-    letter-spacing: 1.5px !important;
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main-color) !important;
 }
 
 /* === BADGES === */
 .numberBadge-37OJ3S,
 .base-PmTxvP,
 .badge-1tDIiB {
-    background: linear-gradient(135deg, var(--comfy-sakura), var(--comfy-rose)) !important;
-    color: var(--comfy-bg-deep) !important;
+    background: linear-gradient(135deg, var(--main-color), var(--hover-color)) !important;
+    color: #120810 !important;
     font-weight: 700 !important;
-    border-radius: 8px !important;
 }
 
 /* === REACTIONS === */
@@ -260,102 +276,129 @@ rect[fill="#1a9b50"] {
     background: rgba(255, 133, 161, 0.06) !important;
     border-color: transparent !important;
     border-radius: 10px !important;
+    backdrop-filter: blur(4px) !important;
 }
 .reaction-3PsJ-m:hover,
 .reaction-3PsJ-m.reacted-nCPRhm {
     background: rgba(255, 133, 161, 0.18) !important;
-    border-color: var(--comfy-sakura) !important;
+    border-color: var(--main-color) !important;
 }
 
-/* === SWITCH === */
-[class*="slider"][class*="checked"] {
-    background: linear-gradient(135deg, var(--comfy-sakura), var(--comfy-gold)) !important;
+/* === MENTIONS INLINE === */
+.mention {
+    background: rgba(255, 133, 161, 0.18) !important;
+    color: var(--main-color) !important;
+    border-radius: 6px !important;
+    padding: 1px 4px !important;
+    font-weight: 600 !important;
+}
+.mention:hover {
+    background: var(--main-color) !important;
+    color: #120810 !important;
 }
 
-/* === BARRA INFERIOR === */
-.panels-3wFtMD {
-    background: var(--comfy-bg-deep) !important;
-    border-top: 1px solid var(--comfy-border) !important;
+/* === STATUS ONLINE === */
+rect[fill="#23a55a"],
+rect[fill="#1a9b50"] {
+    fill: #98d8c8 !important;
 }
 
-/* === DIVIDER === */
-.divider-JfaTT5 {
-    border-color: var(--comfy-border) !important;
+/* === SETTINGS: ITEM SELECIONADO === */
+.item-3XjbnG.selected-3s90CH {
+    background: rgba(255, 133, 161, 0.16) !important;
+    color: var(--main-color) !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+}
+.item-3XjbnG.selected-3s90CH::before {
+    background: linear-gradient(to bottom, var(--main-color), #ffcb77) !important;
+    border-radius: 0 4px 4px 0 !important;
+}
+.item-3XjbnG:hover {
+    background: rgba(255, 133, 161, 0.08) !important;
+    border-radius: 8px !important;
+}
+
+/* === CHANNEL CATEGORY === */
+.containerDefault-YUSmu6 {
+    color: rgba(255, 240, 243, 0.40) !important;
+    text-transform: uppercase !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
 }
 
 /* === TOOLTIP === */
 .tooltip-33Jwqe {
-    background: var(--comfy-card) !important;
-    border: 1px solid var(--comfy-border) !important;
-    color: var(--comfy-cream) !important;
-    font-size: 12px !important;
+    background: rgba(15, 6, 11, 0.92) !important;
+    border: 1px solid rgba(255, 133, 161, 0.2) !important;
+    color: var(--text-color) !important;
     border-radius: 10px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(16px) !important;
+}
+
+/* === DIVIDER === */
+.divider-JfaTT5 {
+    border-color: rgba(255, 133, 161, 0.1) !important;
 }
 
 /* === LINKS === */
-a { color: var(--comfy-peach) !important; }
-a:hover { color: var(--comfy-gold) !important; }
+a { color: #ffb380 !important; }
+a:hover { color: #ffcb77 !important; text-decoration: underline !important; }
 
 /* === CODE === */
 code, pre {
-    background: var(--comfy-bg-deep) !important;
-    border: 1px solid var(--comfy-border) !important;
+    background: rgba(8, 3, 6, 0.70) !important;
+    border: 1px solid rgba(255, 133, 161, 0.15) !important;
     border-radius: 8px !important;
-    color: var(--comfy-gold) !important;
-    font-family: "JetBrains Mono", "Fira Code", monospace !important;
+    backdrop-filter: blur(8px) !important;
 }
-pre code { color: var(--comfy-cream) !important; }
+code { color: #ffb380 !important; }
+pre code { color: var(--text-color) !important; }
 
-/* === CANAL SELECIONADO === */
+/* === CANAL SELECIONADO INDICATOR === */
 .modeSelected-1zMQRu::before,
 [class*="selected"][class*="channel"]::before {
     content: "";
-    position: absolute;
-    left: 0; top: 50%;
+    position: absolute; left: 0; top: 50%;
     transform: translateY(-50%);
-    width: 3px;
-    height: 55%;
-    background: linear-gradient(to bottom, var(--comfy-sakura), var(--comfy-gold));
+    width: 3px; height: 55%;
+    background: linear-gradient(to bottom, var(--main-color), #ffcb77);
     border-radius: 0 3px 3px 0;
 }
 
-/* === VOICE CANAL ATIVO === */
+/* === VOICE ATIVO === */
 .selected-aXhQR6 {
     background: rgba(255, 133, 161, 0.1) !important;
-    border-left: 2px solid var(--comfy-sakura) !important;
 }
 
-/* === HEADER DO CANAL === */
-.header-2V-4MQ {
-    background: var(--comfy-bg-main) !important;
-    border-bottom: 1px solid var(--comfy-border) !important;
-}
-
-/* === MEMBER LIST === */
-.membersWrap-3NUR2t {
-    background: var(--comfy-bg-main) !important;
-    border-left: 1px solid var(--comfy-border) !important;
-}
-
-/* === THREAD SPINE — gradiente quente === */
+/* === THREAD SPINE === */
 .spine-1_l9kb {
-    background: linear-gradient(to bottom,
-        var(--comfy-sakura),
-        var(--comfy-gold),
-        var(--comfy-mint)
-    ) !important;
+    background: linear-gradient(to bottom, var(--main-color), #ffcb77, #98d8c8) !important;
     opacity: 0.5 !important;
     width: 2px !important;
     border-radius: 1px !important;
 }
 
 /* === UNREAD PILL === */
-.pill-2gHAOS rect {
-    fill: var(--comfy-sakura) !important;
+.pill-2gHAOS rect { fill: var(--main-color) !important; }
+
+/* === AVATAR GLOW (hover) === */
+.wrapper-1ZcZW-:hover .avatar-1BDn8e {
+    filter: drop-shadow(0 0 8px rgba(255, 133, 161, 0.5)) !important;
+    transition: filter 0.2s ease !important;
 }
 
-/* === OCULTAR ADS/NITRO === */
+/* === OFFLINE MEMBERS — sutil desaturate === */
+[class*="offline"] .avatar-1BDn8e {
+    filter: grayscale(60%) brightness(70%) !important;
+    transition: filter 0.2s ease !important;
+}
+[class*="offline"]:hover .avatar-1BDn8e {
+    filter: none !important;
+}
+
+/* === OCULTAR ADS === */
 .premiumPromo-1nzyc6,
 .upsellContainer-Wc9gQ1,
 [class*="premiumTab"],
@@ -363,14 +406,34 @@ pre code { color: var(--comfy-cream) !important; }
     display: none !important;
 }
 
-/* === GLOW SUAVE nos avatares de membros online === */
-.wrapper-1ZcZW-:hover .avatar-1BDn8e {
-    filter: drop-shadow(0 0 6px rgba(255, 133, 161, 0.4)) !important;
-    transition: filter 0.2s ease !important;
+/* ============================================================
+   ANIMAÇÕES (inspiradas no ClearVision)
+   ============================================================ */
+@keyframes kc-fade-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+}
+@keyframes kc-slide-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes kc-pulse-glow {
+    0%, 100% { box-shadow: 0 0 8px rgba(255, 133, 161, 0.3); }
+    50%       { box-shadow: 0 0 20px rgba(255, 133, 161, 0.6); }
 }
 
-/* === NOME DO SERVIDOR com estilo === */
-.nameText-Hp0WGF {
-    color: var(--comfy-cream) !important;
-    font-weight: 700 !important;
+/* Modais entram com fade+scale */
+[class*="modal-"]:not([class*="backdrop"]) {
+    animation: kc-fade-in 0.2s ease !important;
+}
+
+/* Mensagens entram com slide */
+.message-2qnXI6 {
+    animation: kc-slide-up 0.15s ease !important;
+}
+
+/* Botão de enviar pisca quando ativo */
+.button-f2h6uQ[aria-label*="enviar"]:not(:disabled),
+.button-f2h6uQ[aria-label*="send"]:not(:disabled) {
+    animation: kc-pulse-glow 2s ease-in-out infinite !important;
 }
