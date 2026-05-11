@@ -16,7 +16,7 @@ const settings = definePluginSettings({
     theme: {
         type: OptionType.SELECT,
         description: "Escolha o tema visual do KaidoCord",
-        default: "comfy",
+        default: "dark",
         options: [
             { label: "Kaido Comfy — soft, lavanda (recomendado)", value: "comfy" },
             { label: "Kaido Dark — vermelho, red team aesthetic", value: "dark" },
