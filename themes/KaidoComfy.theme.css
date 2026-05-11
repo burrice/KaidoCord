@@ -1,310 +1,358 @@
 /**
  * @name Kaido Comfy
- * @description Tema suave e aconchegante para o KaidoCord — paleta inspirada em Catppuccin Mocha
+ * @description Tema soft warm — aesthetic Sakura com tons quentes, creme e rose gold
  * @author Team KAIDO
- * @version 1.0.0
+ * @version 2.0.0
  * @source https://github.com/burrice/KaidoCord
  */
 
 /*
- * PALETA KAIDO COMFY
+ * PALETA KAIDO COMFY v2 — SAKURA WARM
  * ─────────────────────────────────────────
- * base:       #1e1e2e  (azul escuro suave — fundo principal)
- * mantle:     #181825  (mais fundo — sidebar de servidores)
- * crust:      #11111b  (mais fundo ainda)
- * surface0:   #313244  (cards, painéis)
- * surface1:   #45475a  (borders suaves)
- * overlay0:   #6c7086  (elementos desativados)
- * subtext:    #bac2de  (texto secundário)
- * text:       #cdd6f4  (texto principal — off-white quente)
+ * bg-deep:    #12080e   (vinho escuro profundo)
+ * bg-main:    #1c1016   (fundo principal)
+ * bg-surface: #271520   (cards, painéis)
+ * bg-card:    #31192a   (inputs, hover)
+ * border:     #4a2438   (bordas suaves)
  *
- * mauve:      #cba6f7  (accent principal — lavanda)
- * pink:       #f5c2e7  (accent secundário — rose)
- * sky:        #89dceb  (links, info)
- * green:      #a6e3a1  (positivo — sage)
- * yellow:     #f9e2af  (alerta — creme)
- * red:        #f38ba8  (erro — rosa empoeirado)
- * peach:      #fab387  (destaque quente)
+ * sakura:     #ff85a1   (accent principal — rosa sakura)
+ * rose:       #e8607a   (accent hover)
+ * gold:       #ffcb77   (accent secundário — dourado quente)
+ * peach:      #ffb380   (links, destaques)
+ * mint:       #98d8c8   (positivo — verde menta)
+ * coral:      #ff7b7b   (erro suave)
+ * cream:      #fff0f3   (texto principal)
+ * muted:      #a07080   (texto secundário)
  * ─────────────────────────────────────────
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
 :root {
-    --comfy-base:       #1e1e2e;
-    --comfy-mantle:     #181825;
-    --comfy-crust:      #11111b;
-    --comfy-surface0:   #313244;
-    --comfy-surface1:   #45475a;
-    --comfy-surface2:   #585b70;
-    --comfy-overlay0:   #6c7086;
-    --comfy-subtext:    #bac2de;
-    --comfy-text:       #cdd6f4;
-    --comfy-mauve:      #cba6f7;
-    --comfy-pink:       #f5c2e7;
-    --comfy-sky:        #89dceb;
-    --comfy-green:      #a6e3a1;
-    --comfy-yellow:     #f9e2af;
-    --comfy-red:        #f38ba8;
-    --comfy-peach:      #fab387;
-    --comfy-blue:       #89b4fa;
-    --comfy-teal:       #94e2d5;
+    --comfy-bg-deep:    #12080e;
+    --comfy-bg-main:    #1c1016;
+    --comfy-surface:    #271520;
+    --comfy-card:       #31192a;
+    --comfy-border:     #4a2438;
+    --comfy-sakura:     #ff85a1;
+    --comfy-rose:       #e8607a;
+    --comfy-gold:       #ffcb77;
+    --comfy-peach:      #ffb380;
+    --comfy-mint:       #98d8c8;
+    --comfy-coral:      #ff8080;
+    --comfy-cream:      #fff0f3;
+    --comfy-subtext:    #d4a0b0;
+    --comfy-muted:      #7a5060;
 }
+
+/* === FONTE SUAVE === */
+* { font-family: "Nunito", "Whitney", sans-serif !important; }
 
 /* === BACKGROUNDS === */
 .theme-dark {
-    --background-primary:           var(--comfy-base) !important;
-    --background-secondary:         var(--comfy-mantle) !important;
-    --background-secondary-alt:     #1a1a29 !important;
-    --background-tertiary:          var(--comfy-crust) !important;
-    --background-accent:            var(--comfy-surface0) !important;
-    --background-floating:          #1a1a2e !important;
-    --background-mobile-primary:    var(--comfy-base) !important;
-    --background-mobile-secondary:  var(--comfy-mantle) !important;
-    --background-modifier-hover:    rgba(203, 166, 247, 0.06) !important;
-    --background-modifier-active:   rgba(203, 166, 247, 0.12) !important;
-    --background-modifier-selected: rgba(203, 166, 247, 0.16) !important;
-    --background-modifier-accent:   rgba(255, 255, 255, 0.04) !important;
+    --background-primary:           var(--comfy-bg-main) !important;
+    --background-secondary:         var(--comfy-bg-deep) !important;
+    --background-secondary-alt:     #160c12 !important;
+    --background-tertiary:          #0e060a !important;
+    --background-accent:            var(--comfy-card) !important;
+    --background-floating:          var(--comfy-surface) !important;
+    --background-mobile-primary:    var(--comfy-bg-main) !important;
+    --background-mobile-secondary:  var(--comfy-bg-deep) !important;
+    --background-modifier-hover:    rgba(255, 133, 161, 0.07) !important;
+    --background-modifier-active:   rgba(255, 133, 161, 0.14) !important;
+    --background-modifier-selected: rgba(255, 133, 161, 0.18) !important;
+    --background-modifier-accent:   rgba(255, 255, 255, 0.03) !important;
 }
 
-/* === BRAND / ACCENT — MAUVE === */
+/* === ACCENT — SAKURA === */
 .theme-dark {
-    --brand-experiment:     var(--comfy-mauve) !important;
-    --brand-experiment-100: #2e2040 !important;
-    --brand-experiment-200: #4a3060 !important;
-    --brand-experiment-300: #664080 !important;
-    --brand-experiment-360: #9970c8 !important;
-    --brand-experiment-400: #b48ef0 !important;
-    --brand-experiment-430: var(--comfy-mauve) !important;
-    --brand-experiment-460: #d4b8f8 !important;
-    --brand-experiment-500: #e0ccff !important;
-    --brand-500:            var(--comfy-mauve) !important;
-    --brand-560:            #b48ef0 !important;
+    --brand-experiment:     var(--comfy-sakura) !important;
+    --brand-experiment-100: #3d0f20 !important;
+    --brand-experiment-200: #5c1830 !important;
+    --brand-experiment-300: #8c3050 !important;
+    --brand-experiment-360: #c55070 !important;
+    --brand-experiment-400: #e06080 !important;
+    --brand-experiment-430: var(--comfy-sakura) !important;
+    --brand-experiment-460: #ffa0b8 !important;
+    --brand-experiment-500: #ffc0d0 !important;
+    --brand-500:            var(--comfy-sakura) !important;
+    --brand-560:            var(--comfy-rose) !important;
 }
 
-/* === TEXTO === */
+/* === TEXTO — CREAM QUENTE === */
 .theme-dark {
-    --header-primary:      #e6e9ef !important;
+    --header-primary:      var(--comfy-cream) !important;
     --header-secondary:    var(--comfy-subtext) !important;
-    --text-normal:         var(--comfy-text) !important;
-    --text-muted:          var(--comfy-overlay0) !important;
-    --text-link:           var(--comfy-sky) !important;
-    --text-positive:       var(--comfy-green) !important;
-    --text-warning:        var(--comfy-yellow) !important;
-    --text-danger:         var(--comfy-red) !important;
+    --text-normal:         var(--comfy-cream) !important;
+    --text-muted:          var(--comfy-muted) !important;
+    --text-link:           var(--comfy-peach) !important;
+    --text-positive:       var(--comfy-mint) !important;
+    --text-warning:        var(--comfy-gold) !important;
+    --text-danger:         var(--comfy-coral) !important;
     --interactive-normal:  var(--comfy-subtext) !important;
-    --interactive-hover:   var(--comfy-text) !important;
+    --interactive-hover:   var(--comfy-cream) !important;
     --interactive-active:  #ffffff !important;
-    --interactive-muted:   var(--comfy-surface2) !important;
+    --interactive-muted:   var(--comfy-muted) !important;
 }
 
 /* === SIDEBAR DE SERVIDORES === */
 .guilds-2JjMmN,
 nav[aria-label="Servidores"] {
-    background: var(--comfy-crust) !important;
+    background: var(--comfy-bg-deep) !important;
+    border-right: 1px solid var(--comfy-border) !important;
 }
 
 /* === SIDEBAR DE CANAIS === */
 .sidebar-1tnWFu,
 nav[aria-label="Canais"] {
-    background: var(--comfy-mantle) !important;
+    background: var(--comfy-bg-main) !important;
 }
 
 /* === ÁREA DE CHAT === */
 .chat-2ZfjoI {
-    background: var(--comfy-base) !important;
+    background: var(--comfy-bg-main) !important;
+    background-image: radial-gradient(
+        ellipse at top right,
+        rgba(255, 133, 161, 0.04) 0%,
+        transparent 60%
+    ) !important;
 }
 
 /* === INPUT === */
 .channelTextArea-qFWBT7 {
-    background: var(--comfy-surface0) !important;
-    border: 1px solid var(--comfy-surface1) !important;
-    border-radius: 12px !important;
-    transition: border-color 0.2s, box-shadow 0.2s !important;
+    background: var(--comfy-card) !important;
+    border: 1px solid var(--comfy-border) !important;
+    border-radius: 16px !important;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
 .channelTextArea-qFWBT7:focus-within {
-    border-color: var(--comfy-mauve) !important;
-    box-shadow: 0 0 0 2px rgba(203, 166, 247, 0.18) !important;
+    border-color: var(--comfy-sakura) !important;
+    box-shadow:
+        0 0 0 3px rgba(255, 133, 161, 0.15),
+        0 4px 20px rgba(255, 133, 161, 0.08) !important;
 }
 
 /* === MENSAGENS === */
 .message-2qnXI6:hover {
-    background: rgba(203, 166, 247, 0.04) !important;
+    background: rgba(255, 133, 161, 0.04) !important;
+    border-radius: 8px !important;
 }
 
 .message-2qnXI6.selected-1Tbx07 {
-    background: rgba(203, 166, 247, 0.08) !important;
+    background: rgba(255, 133, 161, 0.07) !important;
 }
 
-/* === MENTIONED === */
+/* === MENCIONADO === */
 .mentioned-xhSam3 {
-    background: rgba(203, 166, 247, 0.07) !important;
-    border-left: 2px solid var(--comfy-mauve) !important;
+    background: rgba(255, 133, 161, 0.08) !important;
+    border-left: 3px solid var(--comfy-sakura) !important;
+    border-radius: 0 8px 8px 0 !important;
+}
+
+/* === MENTION INLINE === */
+.mention {
+    background: rgba(255, 133, 161, 0.18) !important;
+    color: var(--comfy-sakura) !important;
+    border-radius: 6px !important;
+    padding: 1px 4px !important;
+    font-weight: 600 !important;
+}
+.mention:hover {
+    background: var(--comfy-sakura) !important;
+    color: var(--comfy-bg-deep) !important;
 }
 
 /* === SCROLLBAR === */
 ::-webkit-scrollbar { width: 4px !important; height: 4px !important; }
 ::-webkit-scrollbar-track { background: transparent !important; }
 ::-webkit-scrollbar-thumb {
-    background: var(--comfy-surface1) !important;
+    background: var(--comfy-border) !important;
     border-radius: 4px !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--comfy-mauve) !important;
+    background: var(--comfy-sakura) !important;
 }
 
 /* === BOTÕES === */
 .button-f2h6uQ[class*="colorBrand"],
 .button-f2h6uQ[class*="lookFilled"] {
-    background: var(--comfy-mauve) !important;
-    color: var(--comfy-crust) !important;
+    background: linear-gradient(135deg, var(--comfy-sakura), var(--comfy-rose)) !important;
+    color: var(--comfy-bg-deep) !important;
     font-weight: 700 !important;
-    transition: background 0.15s, box-shadow 0.15s !important;
+    border-radius: 10px !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
-
 .button-f2h6uQ[class*="colorBrand"]:hover {
-    background: #b48ef0 !important;
-    box-shadow: 0 4px 16px rgba(203, 166, 247, 0.3) !important;
-}
-
-/* === MENÇÃO === */
-.mention {
-    background: rgba(203, 166, 247, 0.16) !important;
-    color: var(--comfy-mauve) !important;
-    border-radius: 4px !important;
-    padding: 0 3px !important;
-}
-
-.mention:hover {
-    background: var(--comfy-mauve) !important;
-    color: var(--comfy-crust) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(255, 133, 161, 0.4) !important;
 }
 
 /* === STATUS ONLINE === */
 rect[fill="#23a55a"],
 rect[fill="#1a9b50"] {
-    fill: var(--comfy-green) !important;
+    fill: var(--comfy-mint) !important;
 }
 
 /* === PAINÉIS / MODAIS === */
 .root-1gCeng,
 [class*="modal-"] {
-    background: var(--comfy-surface0) !important;
-    border: 1px solid var(--comfy-surface1) !important;
+    background: var(--comfy-surface) !important;
+    border: 1px solid var(--comfy-border) !important;
+    border-radius: 16px !important;
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(203, 166, 247, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+        0 24px 64px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 133, 161, 0.1),
+        inset 0 1px 0 rgba(255, 200, 220, 0.08) !important;
+}
+
+/* === GLASS — popouts, dropdowns, menus === */
+.lookFilled-yCfaCM,
+[class*="menu-"] {
+    background: rgba(39, 21, 32, 0.92) !important;
+    border: 1px solid var(--comfy-border) !important;
     border-radius: 12px !important;
+    backdrop-filter: blur(20px) saturate(1.5) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(1.5) !important;
 }
 
 /* === SETTINGS SIDEBAR === */
 .sidebar-2K8pFh {
-    background: var(--comfy-mantle) !important;
+    background: var(--comfy-bg-deep) !important;
 }
 
 .item-3XjbnG.selected-3s90CH {
-    background: rgba(203, 166, 247, 0.18) !important;
-    color: var(--comfy-mauve) !important;
-    border-radius: 6px !important;
+    background: rgba(255, 133, 161, 0.16) !important;
+    color: var(--comfy-sakura) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
 }
-
 .item-3XjbnG.selected-3s90CH::before {
-    background: var(--comfy-mauve) !important;
-    border-radius: 0 3px 3px 0 !important;
+    background: linear-gradient(to bottom, var(--comfy-sakura), var(--comfy-gold)) !important;
+    border-radius: 0 4px 4px 0 !important;
 }
-
 .item-3XjbnG:hover {
-    background: rgba(203, 166, 247, 0.08) !important;
-    border-radius: 6px !important;
+    background: rgba(255, 133, 161, 0.08) !important;
+    border-radius: 8px !important;
 }
 
 /* === CATEGORY HEADER === */
 .containerDefault-YUSmu6 {
-    color: var(--comfy-surface2) !important;
+    color: var(--comfy-muted) !important;
     text-transform: uppercase !important;
     font-size: 10px !important;
     font-weight: 700 !important;
     letter-spacing: 1.5px !important;
 }
 
-/* === BADGES (unread, ping) === */
+/* === BADGES === */
 .numberBadge-37OJ3S,
 .base-PmTxvP,
 .badge-1tDIiB {
-    background: var(--comfy-mauve) !important;
-    color: var(--comfy-crust) !important;
+    background: linear-gradient(135deg, var(--comfy-sakura), var(--comfy-rose)) !important;
+    color: var(--comfy-bg-deep) !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
 }
 
 /* === REACTIONS === */
+.reaction-3PsJ-m {
+    background: rgba(255, 133, 161, 0.06) !important;
+    border-color: transparent !important;
+    border-radius: 10px !important;
+}
 .reaction-3PsJ-m:hover,
 .reaction-3PsJ-m.reacted-nCPRhm {
-    background: rgba(203, 166, 247, 0.15) !important;
-    border-color: var(--comfy-mauve) !important;
+    background: rgba(255, 133, 161, 0.18) !important;
+    border-color: var(--comfy-sakura) !important;
 }
 
 /* === SWITCH === */
 [class*="slider"][class*="checked"] {
-    background: var(--comfy-mauve) !important;
+    background: linear-gradient(135deg, var(--comfy-sakura), var(--comfy-gold)) !important;
 }
 
 /* === BARRA INFERIOR === */
 .panels-3wFtMD {
-    background: var(--comfy-crust) !important;
-    border-top: 1px solid var(--comfy-surface0) !important;
+    background: var(--comfy-bg-deep) !important;
+    border-top: 1px solid var(--comfy-border) !important;
 }
 
 /* === DIVIDER === */
 .divider-JfaTT5 {
-    border-color: var(--comfy-surface0) !important;
+    border-color: var(--comfy-border) !important;
 }
 
 /* === TOOLTIP === */
 .tooltip-33Jwqe {
-    background: var(--comfy-surface0) !important;
-    border: 1px solid var(--comfy-surface1) !important;
-    color: var(--comfy-text) !important;
+    background: var(--comfy-card) !important;
+    border: 1px solid var(--comfy-border) !important;
+    color: var(--comfy-cream) !important;
     font-size: 12px !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
 }
 
 /* === LINKS === */
-a {
-    color: var(--comfy-sky) !important;
-}
-a:hover {
-    color: #74c7ec !important;
-    text-decoration: underline !important;
-}
+a { color: var(--comfy-peach) !important; }
+a:hover { color: var(--comfy-gold) !important; }
 
 /* === CODE === */
 code, pre {
-    background: var(--comfy-mantle) !important;
-    border: 1px solid var(--comfy-surface0) !important;
-    border-radius: 6px !important;
-    color: var(--comfy-pink) !important;
+    background: var(--comfy-bg-deep) !important;
+    border: 1px solid var(--comfy-border) !important;
+    border-radius: 8px !important;
+    color: var(--comfy-gold) !important;
     font-family: "JetBrains Mono", "Fira Code", monospace !important;
 }
+pre code { color: var(--comfy-cream) !important; }
 
-pre code {
-    color: var(--comfy-text) !important;
+/* === CANAL SELECIONADO === */
+.modeSelected-1zMQRu::before,
+[class*="selected"][class*="channel"]::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 55%;
+    background: linear-gradient(to bottom, var(--comfy-sakura), var(--comfy-gold));
+    border-radius: 0 3px 3px 0;
 }
 
-/* === VOICE CHANNEL ATIVO === */
+/* === VOICE CANAL ATIVO === */
 .selected-aXhQR6 {
-    background: rgba(203, 166, 247, 0.1) !important;
-    border-left: 2px solid var(--comfy-mauve) !important;
-    border-radius: 4px !important;
+    background: rgba(255, 133, 161, 0.1) !important;
+    border-left: 2px solid var(--comfy-sakura) !important;
 }
 
-/* === GLASS: popouts e dropdowns === */
-.lookFilled-yCfaCM,
-[class*="menu-"] {
-    background: var(--comfy-surface0) !important;
-    border: 1px solid var(--comfy-surface1) !important;
-    border-radius: 10px !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+/* === HEADER DO CANAL === */
+.header-2V-4MQ {
+    background: var(--comfy-bg-main) !important;
+    border-bottom: 1px solid var(--comfy-border) !important;
+}
+
+/* === MEMBER LIST === */
+.membersWrap-3NUR2t {
+    background: var(--comfy-bg-main) !important;
+    border-left: 1px solid var(--comfy-border) !important;
+}
+
+/* === THREAD SPINE — gradiente quente === */
+.spine-1_l9kb {
+    background: linear-gradient(to bottom,
+        var(--comfy-sakura),
+        var(--comfy-gold),
+        var(--comfy-mint)
+    ) !important;
+    opacity: 0.5 !important;
+    width: 2px !important;
+    border-radius: 1px !important;
+}
+
+/* === UNREAD PILL === */
+.pill-2gHAOS rect {
+    fill: var(--comfy-sakura) !important;
 }
 
 /* === OCULTAR ADS/NITRO === */
@@ -315,50 +363,14 @@ pre code {
     display: none !important;
 }
 
-/* === UNREAD PILL === */
-.pill-2gHAOS rect {
-    fill: var(--comfy-mauve) !important;
+/* === GLOW SUAVE nos avatares de membros online === */
+.wrapper-1ZcZW-:hover .avatar-1BDn8e {
+    filter: drop-shadow(0 0 6px rgba(255, 133, 161, 0.4)) !important;
+    transition: filter 0.2s ease !important;
 }
 
-/* === SERVER ATIVO === */
-.wrapper-1ZcZW-.selected-bZ3Lme .blob-3La4vh {
-    border-radius: 16px !important;
-}
-
-/* === CANAL SELECIONADO indicador === */
-.modeSelected-1zMQRu::before,
-[class*="selected"][class*="channel"]::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 55%;
-    background: var(--comfy-mauve);
-    border-radius: 0 3px 3px 0;
-}
-
-/* === WARMTH: cor de fundo do header do chat === */
-.header-2V-4MQ {
-    background: var(--comfy-base) !important;
-    border-bottom: 1px solid var(--comfy-surface0) !important;
-}
-
-/* === WARMTH: member list === */
-.membersWrap-3NUR2t {
-    background: var(--comfy-mantle) !important;
-}
-
-/* === WARMTH: thread spine arco-íris (Catppuccin touch) === */
-.spine-1_l9kb {
-    background: linear-gradient(
-        to bottom,
-        var(--comfy-mauve),
-        var(--comfy-pink),
-        var(--comfy-sky)
-    ) !important;
-    opacity: 0.6 !important;
-    width: 2px !important;
-    border-radius: 1px !important;
+/* === NOME DO SERVIDOR com estilo === */
+.nameText-Hp0WGF {
+    color: var(--comfy-cream) !important;
+    font-weight: 700 !important;
 }
