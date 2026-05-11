@@ -86,7 +86,7 @@ async function generateDebugInfoMessage() {
 
     const info = {
         Kaidocord:
-            `v${VERSION} • [${gitHash}](<https://github.com/teamkaido/kaidocord/commit/${gitHash}>)` +
+            `v${VERSION} • [${gitHash}](<https://github.com/burrice/KaidoCord/commit/${gitHash}>)` +
             `${SettingsPlugin.additionalInfo} - ${Intl.DateTimeFormat("en-GB", { dateStyle: "medium" }).format(BUILD_TIMESTAMP)}`,
         Client: `${RELEASE_CHANNEL} ~ ${client}`,
         Platform: navigator.platform

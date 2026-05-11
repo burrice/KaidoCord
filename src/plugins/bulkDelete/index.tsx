@@ -48,7 +48,7 @@ async function bulkDeleteMessages(channelId: string, limit: number) {
                 try {
                     await RestAPI.del({ url: `/channels/${channelId}/messages/${msg.id}` });
                     deleted++;
-                    await new Promise(r => setTimeout(r, 350)); // anti rate-limit
+                    await new Promise(r => setTimeout(r, settings.store.deleteDelay ?? 350));
                 } catch {
                     await new Promise(r => setTimeout(r, 1500));
                 }
